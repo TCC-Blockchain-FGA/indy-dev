@@ -30,13 +30,19 @@ ARG indy_node_ver=1.6.576
 ARG python3_indy_crypto_ver=0.4.3
 ARG indy_crypto_ver=0.4.3
 
-RUN apt-get update -y && apt-get install -y \
-        indy-plenum=${indy_plenum_ver} \
-        indy-anoncreds=${indy_anoncreds_ver} \
-        indy-node=${indy_node_ver} \
-        python3-indy-crypto=${python3_indy_crypto_ver} \
-        libindy-crypto=${indy_crypto_ver} \
-        vim
+RUN apt-get update -y
+RUN apt-get install -y python3-orderedset=2.0
+RUN apt-get install -y python3-psutil=5.4.3
+RUN apt-get install -y python3-pyzmq=17.0.0
+RUN apt-get install -y python3-psutil=5.4.3
+RUN apt-get install -y python3-indy-crypto=0.4.3
+RUN apt-get install -y python3-pympler=0.5
+
+RUN apt-get install -y indy-plenum=${indy_plenum_ver}
+RUN apt-get install -y indy-anoncreds=${indy_anoncreds_ver}
+RUN apt-get install -y indy-node=${indy_node_ver}
+RUN apt-get install libindy-crypto=${indy_crypto_ver} -y --allow-downgrades
+RUN apt-get install -y vim
 
 RUN echo "[supervisord]\n\
 logfile = /tmp/supervisord.log\n\

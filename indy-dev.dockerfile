@@ -21,12 +21,11 @@ RUN pip3 install -U \
     python3-indy==1.6.2-dev-720 \
     asyncio
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68DB5E88 \
-    && add-apt-repository "deb https://repo.sovrin.org/sdk/deb xenial master" \
-    && apt-get update \
-    && apt-get install -y \
-    libindy=1.8.3~1105 \
-    indy-cli
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68DB5E88
+RUN add-apt-repository "deb https://repo.sovrin.org/sdk/deb xenial master"
+RUN apt-get update
+RUN apt-get install -y libindy=1.8.3~1105
+RUN apt-get install -y indy-cli
 
 # If you're working on your own project in a separate dir structure, change this to set the proper entry point for python.
 ENV PYTHONPATH="/home/indy/python"
