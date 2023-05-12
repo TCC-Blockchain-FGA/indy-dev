@@ -43,5 +43,7 @@ def save_pool_genesis_txn_file(path):
 
 def run_coroutine(coroutine, loop=None):
     if loop is None:
-        loop = asyncio.get_event_loop()
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        # loop = asyncio.get_event_loop()
     loop.run_until_complete(coroutine())
